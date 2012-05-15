@@ -1,0 +1,58 @@
+1.1b0 2001-07-14 Christophe Bothamy <cbothamy@free.fr>
+================
+- Added support for id3 v1.1
+- Added automatic directory creation when renaming. 
+- Added a "-default" option to handle blank fields when renaming.
+- Added the possibility to copy tags from other files.
+- Changed the default "space" char to a more sensible " " when renaming.
+- Uniformisation of the syntaxes of the different options.
+  (all options can use = or next arg, with or without quotes)
+- Different handling of the options in the resource file (same as commandline).
+  Existing .id3renrc files might need an update.
+
+1.0b2 2000-02-01 Christophe Bothamy <cbothamy@free.fr> 
+================
+- Correction of a display bug in the help screen
+
+1.0b1 2000-12-15 Christophe Bothamy <cbothamy@free.fr>
+================
+- Reorganisation of directories and files
+- Sources tar ball does not contain executable any more.
+  I will set up a debian package.
+- Due to lack of compiler, Windows support is discontinued. 
+  If i get enough feed back, i'll consider install Visual C++ somewhere
+  In the meantime, use id3ren 0.97a which contains win32 executable.
+  The sources compiles fine under cygwin, maybe you could give it a try
+- Tagging a file can be done with informations from the file name. 
+  Added -tagfromfilename and -tagffn (synonymns) and -tagtemplate. 
+  It's a good idea to use it with the -tagonly option.
+
+0.97a Robert Alto <badcrc@tscnet.com>
+=====
+- Fixed a short->int screw up on my part that was causing weird things to
+  happen...Solaris got a bus error, 95 and Linux didn't read certain options
+  correctly.
+- Changed usage screen for Linux to "for *nix" cause ascii doesn't like
+  things for Linux on his Solaris box.
+
+0.97 Robert Alto <badcrc@tscnet.com>
+====
+- Added -edit option.
+- Several options are now toggles.  For example if you specify -verbose
+  in a config file, then you want to disable verbose mode one time, you
+  can specify -verbose on the command line and it will disable it for that
+  one use.  Options that aren't toggles: -quick, -showtag, -defcase, -upper,
+  -lower....and any other option that accepts a second argument, or displays
+  info (i.e., -showgen, -help, -template, -space, etc).
+- Included some sample rc files in the samples directory.
+
+0.96 Robert Alto <badcrc@tscnet.com>
+====
+- Included source in archive, with a Makefile for both Linux and Win32.
+- Added -nocfg, -nogenre, -remchar, -repchar, -verbose options.
+- Added support for config files.  See id3ren.txt for info.
+- You can now change specific parts of a tag if a file already has a tag.
+  For example, if you have a file that has a tag and only want to change
+  the album name, you can use -tag in conjunction with -album.  You will
+  still be prompted for other tag info if they are blank unless you use
+  the -noalbum

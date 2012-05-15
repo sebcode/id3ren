@@ -1,0 +1,7 @@
+=====
+TO DO
+=====
+* Use a "mv" style renaming, to be able to span filesystems
+* Use autoconf
+* id3 tags v2 
+* Would be nice to have a graphical frontend

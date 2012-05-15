@@ -1,0 +1,205 @@
+==============
+id3ren Options
+==============
+
+Please note that the syntax of the option can use the "=" sign or the next
+argument, with or without quotes. So -option ARGUMENT, -option "ARGUMENT",
+-option=ARGUMENT, -option="ARGUMENT" have all the same meaning.
+
+-album=ALBUM_NAME
+  Sets the album name to use when tagging files. All files will be tagged
+  with this album name without prompting.
+
+-artist=ARTIST_NAME
+  Sets the artist name to use when tagging files. All files will be tagged
+  with this artist name without prompting.
+
+-comment=COMMENT
+  Sets the comment to use when tagging files. All files will be tagged
+  with this comment without prompting.
+
+-copyalbum
+  Copies the album field from the source file tag set by -copytagfrom
+
+-copyall
+  Copies all the fields from the source file tag set by -copytagfrom
+
+-copyartist
+  Copies the artist field from the source file tag set by -copytagfrom
+
+-copycomment
+  Copies the comment field from the source file tag set by -copytagfrom
+
+-copygenre
+  Copies the genre field from the source file tag set by -copytagfrom
+
+-copysong
+  Copies the song field from the source file tag set by -copytagfrom
+
+-copytagfrom=FILE 
+  Sets the filename to copy tag field from.
+
+-copytrack
+  Copies the track field from the source file tag set by -copytagfrom
+
+-copyyear
+  Copies the year field from the source file tag set by -copytagfrom
+
+-defcase
+  Use the default case of characters from the ID3 tag when renaming files.
+  This is default.
+
+-default=DEFAULT
+  Sets the default field to be used only when renaming if a field is blank.
+  Useful when renaming and creating "unknown" subdirectories.
+  Defaults to "unknown".
+
+-edit
+  If a file already has a tag and you want to change just one specific field
+  of the tag, use this option in conjunction with -tag and the option for
+  the field you want to change.  For example to change just the album name
+  of a file:
+  id3ren -tag -edit -album="New Album Name" sample.mp3
+  * This option is a toggle.
+
+-genre=[# | GENRE_NAME]
+  Sets the genre to use when tagging files. All files will be tagged
+  with this genre without prompting.  To see a list of allowable genres
+  use the -showgen argument.  -genre accepts either the number of the genre
+  as displayed with -showgen, or the name of the genre.
+
+-help
+  Displays the help screen.
+
+-log
+  Log most output to id3ren.log.
+  * This option is a toggle.
+
+-lower
+  Convert file names to lowercase characters.
+
+-noalbum
+  Don't prompt for the album when adding a tag.
+  * This option is a toggle.
+
+-nocfg
+  Don't try reading any config files, even if they exist.
+  * This option is a toggle.
+
+-nocomment
+  Don't prompt for a comment when adding a tag.
+  * This option is a toggle.
+
+-nogenre
+  Don't prompt for a genre when adding a tag.
+  * This option is a toggle.
+
+-notagprompt
+  Never prompt for tag information.  Files without tags are skipped.
+  * This option is a toggle.
+
+-notrack
+  Don't prompt for the track number when adding a tag.
+  * This option is a toggle.
+
+-noyear
+  Don't prompt for the year when adding a tag.
+  * This option is a toggle.
+
+-quick
+  Automatically sets -noalbum, -nocomment, and -noyear.
+
+-quiet
+  Run quietly, displaying only errors or prompts.
+  * This option is a toggle.
+
+-remchar=CHARS
+  CHARS indicates a string of characters that will be removed from the
+  filename if found.
+
+-repchar=CHARS
+  CHARS indicates a string of characters, EACH followed by the character to
+  replace it with.  For example, to replace all plus '+' signs with a hyphen
+  '-', you would use '-repchar +-'.  To do the previous, and also replace
+  all '&' with '_', you would use '-repchar +-&_'.
+
+-searchgen=# | GENRE
+  Searches the list of genres and displays either the genre name
+  corresponding to #, or shows all substring matches of GENRE.
+
+-showgen
+  Displays all the music genres currently in the program.
+
+-showtag
+  Display the tags for the specified files.  No renaming is performed.
+
+-song=SONG_NAME
+  Sets the song name to use when tagging files. All files will be tagged
+  with this song name without prompting.
+
+-space=STRING
+  Change all spaces in the renamed file to STRING. To remove all spaces, use
+  '-space=' or '-space=""'.  The default space character is ' '.
+
+-striptag
+  Remove the tags for the specified files.
+  * This option is a toggle.
+
+-tag
+  Always ask for a tag, even if the file already has one.
+  * This option is a toggle.
+
+-tagfromfilename, -tagffn
+  Use informations from the filename when tagging. See tagtemplate.
+  * This option is a toggle.
+
+-tagonly
+  Don't rename any files, just ask for tag information.  Note that -tagonly
+  only asks for tag information on files that don't have a tag already.
+  To have it ask for a tag on all files, use with -tag.
+  * This option is a toggle.
+
+-tagtemplate=TEMPLATE
+  Use TEMPLATE as the basis for tagging files.  The default template used
+  is '[%a]-[%s].mp3'.  Identifiers that can be used in the template are:
+
+  %a  - Artist name
+  %c  - Comment
+  %s  - Song name
+  %t  - Album title
+  %n  - Track Number
+  %y  - Year
+  %g  - Genre
+  %d  - Dummy
+
+  It is a VERY good idea to have fixed separators between fields.
+
+-template=TEMPLATE
+  Use TEMPLATE as the basis for renaming files.  The default template used
+  is '[%a]-[%s].mp3'.  Identifiers that can be used in the template are:
+
+  %a  - Artist name
+  %c  - Comment
+  %s  - Song name
+  %t  - Album title
+  %n  - Track Number
+  %y  - Year
+  %g  - Genre
+
+-track=TRACK
+  Sets the track number to use when tagging files. All files will be
+  tagged with this track number without prompting.
+  TRACK must be an integer between 1 and 99.
+
+-upper
+  Convert file names to uppercase characters.
+
+-verbose
+  Display more messages than usual.
+  * This option is a toggle.
+
+-year=YEAR
+  Sets the year to use when tagging files. All files will be tagged
+  with this year without prompting.
+
+And of course the program accepts wildcards for filenames.  

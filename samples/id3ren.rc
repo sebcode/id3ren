@@ -1,0 +1,9 @@
+##########################################
+# badcrc's id3ren config file
+# Win32 style
+##########################################
+-edit
+-lower
+-remchar '`@%$^?!
+-space=_
+-template=[$a]-[$s].mp3

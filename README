@@ -1,0 +1,72 @@
+id3ren  (C) Copyright 1998 by Robert Alto (badcrc@tscnet.com)
+        (C) Copyright 2001 Christophe Bothamy (cbothamy@free.fr)
+
+=======
+License
+=======
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+
+============
+Introduction
+============
+id3ren is used to rename batches of mp3 files by reading the ID3 tag
+at the end of the file which contains the song name, artist, album, year,
+and a comment.  
+
+The secondary function of id3ren is a tagger, which can create, modify, 
+or remove ID3 tags. The id3 fields can be set on the command line, 
+entered interactively, or "guessed" from the path and the filename.
+
+If you have questions, comments, or bug reports, contact cbothamy@free.fr
+To get the latest version please visit http://cbothamy.free.fr/projects/id3ren/
+
+Please refer to the USAGE file for the meaning of the different options.
+Please refer to the FEATURES file to learn more on new features of id3ren.
+
+=====
+Notes
+=====
+- id3ren is developed and tested on linux, but it should work as is
+  on any unix system.
+
+- Windows support is discontinued. It may still work, but it has not been tested
+  id3ren is known to compile fine with cygwin.
+
+- Config files should only contain the exact same options as specified on
+  the command line.  You can use # at the beginning of a line for a comment.
+  Spaces at the beginning of a line are ignored.  NOTE: There is no more
+  syntax difference between a config file option and a command line option.
+
+- id3ren first reads all command line options.  If it doesn't find the
+  "-nocfg" command line option, it looks for config files in this order:
+  1) Reads environment variable ID3REN which should contain the complete
+     path to a config file.  If variable doesn't exist or file not found
+     then...
+  2) Reads environment variable HOME and look for $HOME/.id3renrc.
+     If variable doesn't exist or file not found then...
+  3) It looks for /etc/id3renrc. 
+
+
+=====
+Ports
+=====
+- a BEOS port has been made by Shayne. 
+  See http://curvedspave.org/html/id3ren.html
+- another BEOS port has been made by Scot Hacker. 
+  See at http://bebits.com/app/552
+- a FreeBSD port has been made by Joao Carlos Mendes Luis. 
+  See http://www.geocrawler.com/archives/3/167/1999/2/0/540206/

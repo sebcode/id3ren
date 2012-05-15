@@ -1,0 +1,9 @@
+##########################################
+# arc's id3ren config file
+# Linux style
+##########################################
+-quick
+-lower
+-remchar !'?
+-space=_
+-template=[%a]-[%s].mp3

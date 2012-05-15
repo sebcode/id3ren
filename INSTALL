@@ -1,0 +1,27 @@
+============
+Installation
+============
+
+Grab the latest version of id3ren from http://cbothamy.free.fr/projects/id3ren
+
+Unpack it :
+
+% tar xzvf id3ren-Version.tgz
+
+Install it :
+
+% cd id3ren-Version
+% su
+% make install
+
+id3ren gets installed in /usr/bin.
+Man page gets installed in /usr/man
+
+================
+More information
+================
+See the "ChangeLog" file.
+See the "README" file for guidelines on config files
+See the "USAGE" file for guidelines on command line options.
+See the "FEATURES" file for guidelines on new Features.
+See the "FEEDBACK" file for bug reports.

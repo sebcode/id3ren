@@ -1,0 +1,72 @@
+=====================
+Tagging from Filename
+=====================
+
+I added this feature to id3ren, because i never found a good utility
+to set tags to my untagged mp3s. Nearly all useful informations were
+already available in the filenames, and i didn't want to do the job twice.
+
+The tagtemplate can contain the following identifiers :
+ %a - Artist       %c - Comment  %g - Genre  %s - Song Name
+ %t - Album title  %y - Year     %d - Dummy
+ 
+Example :
+
+My mp3s are stored in a directory for each album. Each song is prefixed
+by the track number.
+
+bash-2.01$ find "/mp3/vast - visual audio sensory theater"
+/mp3/vast - visual audio sensory theater/
+/mp3/vast - visual audio sensory theater/01 here.mp3
+/mp3/vast - visual audio sensory theater/02 touched.mp3
+/mp3/vast - visual audio sensory theater/03 dirty hole.mp3
+/mp3/vast - visual audio sensory theater/04 pretty when you cry.mp3
+/mp3/vast - visual audio sensory theater/05 i'm dying.mp3
+/mp3/vast - visual audio sensory theater/06 flames.mp3
+/mp3/vast - visual audio sensory theater/07 temptation.mp3
+/mp3/vast - visual audio sensory theater/08 three doors.mp3
+/mp3/vast - visual audio sensory theater/09 the niles edge.mp3
+/mp3/vast - visual audio sensory theater/10 somewhere else to be.mp3
+/mp3/vast - visual audio sensory theater/11 .mp3
+/mp3/vast - visual audio sensory theater/12 you.mp3
+
+I want to tag all thoses mp3s :
+
+id3ren -tagonly -tag -tagfromfilename -tagtemplate="/mp3/%a - %t/%n %s.mp3" \
+-genre Alernative -nocomment -year 1998 \
+"/mp3/vast - visual audio sensory theater/*.mp3"
+
+If your mp3s are stored in a directory for the artist and a subdirectory for
+the album name you could use the following tagtemplate : "%a/%t/%n %s.mp3".
+As long as you have a fixed separators between fields, you should be ok.
+
+
+===================================
+Creating Directories while renaming
+===================================
+
+id3ren can now automatically create directory entries if the template contains 
+"/". You could use a template like "%a/%t/%n %s.mp3" to create a tree for 
+your mp3s, the first level would be the artist, the second the album title, 
+and then each file would be composed of the track and the song name.
+It is useful to set a default field to handle blank fields (for example
+-default="unknown").
+
+
+================
+id3 v1.1 Support
+================
+
+id3ren, from version 1.1 and up supports id3 v1.1 transparently.
+An id3 v1.1 tag will be created only if a track number is present.
+
+
+==============================
+Copying tags from another file
+==============================
+
+id3ren can import tags from another tagged file. Use the -copytagfrom
+option along with one or several -copy... (tag field) options.
+Several source files can be used in sequence, like in this example :
+-copytagfrom=/my/first.mp3 -copysong -copyartist \
+-copytagfrom=/my/second.mp3 -copyalbum -copycomment

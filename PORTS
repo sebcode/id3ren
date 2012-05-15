@@ -1,0 +1,15 @@
+======
+PORTS
+======
+
+- A BEOS port has been done by Shayne.
+  See http://curvedspace.org/html/id3ren.html
+- Another BEOS port has been done by Scot Hacker
+  See http://bebits.bebits.com/app/552
+- A FreeBSD port has been done by Joao Carols Mendes Luis
+  See http://www.geocrawler.com/archives/3/167/1999/2/0/540206/
+
+You are welcome to port id3ren to any OS you like.
+Please let me <cbothamy@free.fr> know if you do.
+As id3ren only uses plain ANSI C, it should be rather straightforward.
+
