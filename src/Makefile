@@ -2,8 +2,10 @@ CFLAGSDEBUG = -g -O2 -Wall -DDEBUG
 CFLAGS = -s -O2 -Wall
 CC = gcc
 RM = rm -f
-INSTALL = install -s -m 755
-INSTALL_DIR = /usr/bin
+INSTALL = install -D -s -m 755
+# Edited for Debian GNU/Linux.
+DESTDIR =
+INSTALL_DIR = $(DESTDIR)/usr/bin
 INSTALL_NAME = id3ren
 
 SOURCES = id3ren.c id3tag.c id3file.c id3misc.c

@@ -1,6 +1,8 @@
 RM = rm -f
-INSTALL = install -m 755
-INSTALL_DIR = /usr/man/man1
+INSTALL = install -D -m 755
+# Edited for Debian GNU/Linux.
+DESTDIR =
+INSTALL_DIR = $(DESTDIR)/usr/man/man1
 INSTALL_NAME = id3ren.1.gz
 
 all:

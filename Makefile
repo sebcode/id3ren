@@ -6,7 +6,7 @@ debug:
 
 install: 
 	make -C src install
-	make -C man install
+# 	make -C man install
 
 clean:
 	make -C src clean
