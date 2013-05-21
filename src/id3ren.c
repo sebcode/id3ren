@@ -102,6 +102,7 @@ char applied_filename[512];
 
 void exit_function (void);
 void apply_template (char *);
+void sanitize(char *);
 void show_usage (char *);
 void check_num_args (int, int);
 int read_config (char *, char *);
@@ -131,6 +132,8 @@ apply_template (char *origfile)
   applied_filename[0] = '\0';
   ptrNewfile = applied_filename;
 
+  if (NULL != def_field) sanitize(def_field);
+
   while (filename_template[tcount] != '\0')
   {
     if (filename_template[tcount] == IDENT_CHAR)
@@ -140,39 +143,44 @@ apply_template (char *origfile)
       switch (filename_template[tcount])
       {
         case 'a': 
-          if(strcmp(ptrtag->artist,"")!=0)
+          if(strcmp(ptrtag->artist,"")!=0) {
+           sanitize(ptrtag->artist);
            strcat(applied_filename, ptrtag->artist); 
-          else if(def_field!=NULL)
+          } else if(def_field!=NULL)
            strcat(applied_filename, def_field); 
           break;
         case 'c': 
-          if(strcmp(ptrtag->u.v10.comment,"")!=0)
+          if(strcmp(ptrtag->u.v10.comment,"")!=0) {
+           sanitize(ptrtag->u.v10.comment);
            strcat(applied_filename, ptrtag->u.v10.comment);
-          else if(def_field!=NULL)
+          } else if(def_field!=NULL)
            strcat(applied_filename, def_field); 
           break;
         case 'g':
-          if (ptrtag->genre < genre_count && ptrtag->genre >= 0)
+          if (ptrtag->genre < genre_count && ptrtag->genre >= 0) 
            strcat(applied_filename, genre_table[ptrtag->genre]);
-          else if(def_field!=NULL)
+           else if(def_field!=NULL)
            strcat(applied_filename, def_field); 
           break;
         case 's': 
-          if(strcmp(ptrtag->songname,"")!=0)
+          if(strcmp(ptrtag->songname,"")!=0) {
+           sanitize(ptrtag->songname);
            strcat(applied_filename, ptrtag->songname); 
-          else if(def_field!=NULL)
+          } else if(def_field!=NULL)
            strcat(applied_filename, def_field); 
           break;
         case 't': 
-          if(strcmp(ptrtag->album,"")!=0)
+          if(strcmp(ptrtag->album,"")!=0) {
+           sanitize(ptrtag->album);
            strcat(applied_filename, ptrtag->album); 
-          else if(def_field!=NULL)
+          } else if(def_field!=NULL)
            strcat(applied_filename, def_field); 
           break;
         case 'y': 
-          if(strcmp(ptrtag->year,"")!=0)
+          if(strcmp(ptrtag->year,"")!=0) {
+           sanitize(ptrtag->year);
            strcat(applied_filename, ptrtag->year); 
-          else if(def_field!=NULL)
+          } else if(def_field!=NULL)
            strcat(applied_filename, def_field); 
           break;
         case 'n':   
@@ -249,26 +257,28 @@ apply_template (char *origfile)
   }
 
   *ptrNewfile = '\0';
+}
 
+void sanitize(char* string)
+{
+  int i;
   /* Convert illegal or bad filename characters to good characters */
-  for (i=0; i < strlen(applied_filename); i++)
+  for (i=0; i < strlen(string); i++)
   {
-    switch (applied_filename[i])
+    switch (string[i])
     {
-      case '<': applied_filename[i] = '['; break;
-      case '>': applied_filename[i] = ']'; break;
-      case '|': applied_filename[i] = '_'; break;
-      // this is now used to create dirs
-      //case '/': applied_filename[i] = '-'; break;
-      case '\\': applied_filename[i]= '-'; break;
-      case '*': applied_filename[i] = '_'; break;
-      case '?': applied_filename[i] = '_'; break;
-      case ':': applied_filename[i] = ';'; break;
-      case '"': applied_filename[i] = '-'; break;
+      case '<': string[i] = '['; break;
+      case '>': string[i] = ']'; break;
+      case '|': string[i] = '_'; break;
+      case '/': string[i] = '-'; break;
+      case '\\': string[i]= '-'; break;
+      case '*': string[i] = '_'; break;
+      case '?': string[i] = '_'; break;
+      case ':': string[i] = ';'; break;
+      case '"': string[i] = '-'; break;
       default: break;
     }
   }
-
 }
 
 

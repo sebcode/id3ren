@@ -149,10 +149,31 @@ char *genre_table[] = {
     "Acapella",
     "Euro-House",
     "Dance Hall",
-
+    "Goa",
+    "Drum & Bass",
+    "Club-House",
+    "Hardcore",
+    "Terror",
+    "Indie",
+    "BritPop",
+    "Negerpunk",
+    "Polsk Punk",
+    "Beat",
+    "Christian G",
+    "Heavy Metal",
+    "Black Metal",
+    "Crossover",
+    "Contemporary C",
+    "Christian Rock",
+    "Merengue",
+    "Salsa",
+    "Thrash Metal",
+    "Anime",
+    "JPop",
+    "SynthPop"
                        };
 
-const int genre_count = 125;
+const int genre_count = 148;
 
 
 #endif /* __GENRE_H__ */

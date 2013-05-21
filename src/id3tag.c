@@ -57,7 +57,7 @@ show_genres (int pause_flag)
 
   for (i=0, count=1, lines=1; i<genre_count; i++, count++)
   {
-    printf("%3d:%-15s", (i+1), genre_table[i]);
+    printf("%3d:%-15s", i, genre_table[i]);
 
     if (count >= 4)
     {
@@ -105,7 +105,7 @@ search_genre (int flag_search_only, int *dest, char *search_gen)
 
   if (i >= strlen(search_gen))
   {
-    digit = (atoi(search_gen) - 1);
+    digit = atoi(search_gen);
 
     if (digit >= 0 && digit < genre_count)
     {

@@ -1,0 +1,285 @@
+.TH ID3REN 1 "14 july 2001"
+.SH NAME
+id3ren \- Reads and writes ID3 tags from mp3 files.
+
+.SH SYNOPSIS
+\fBid3ren\fP [-help] [-song=\fISONG_NAME\fP] [-artist=\fIARTIST_NAME\fP]
+[-album=\fIALBUM_NAME\fP] [-year=\fIYEAR\fP] [-genre={# | \fIGENRE\fP}]
+[-comment=\fICOMMENT\fP] [-track=\fITRACK\fP] [-showgen]
+[-searchgen={# | \fIGENRE}\fP] [-default=\fIDEFAULT\fP]
+[-copytagfrom=\fIFILE\fP [-copysong] [-copyartist] [-copyalbum]
+[-copyyear] [-copygenre] [-copycomment] [-copytrack] [-copyall] ]
+[-quick] [-noalbum] [-nocomment] [-noyear] [-nogenre] [-notrack]
+[-tag] [-edit] [-notagprompt | -showtag | -striptag | -tagonly]
+[-nocfg] [-log] [-quiet] [-verbose] [-defcase | -lower | -upper]
+[-remchar=\fICHARS\fP] [-repchar=\fICHARS\fP] [-space=\fISTRING\fP]
+[-tagfromfilename | -tagffn] [-tagtemplate=\fITAGTEMPLATE\fP]
+[-template=\fITEMPLATE] [\fIFILE1\fP \fIFILE2\fP.. | \fIWILDCARDS\fP]
+
+.SH COPYRIGHT
+id3 Renamer
+   (C) Copyright 1998 by Robert Alto (badcrc@tscnet.com)
+   (C) Copyright 2001 Christophe Bothamy (cbothamy@free.fr)
+
+.SH DESCRIPTION
+\fBid3ren\fP is used to rename batches of mp3 files by reading the ID3 tag
+at the end of the file which contains the song name, artist, album, year,
+and a comment.
+The secondary function of \fBid3ren\fP is a tagger, which
+can create, modify, or remove ID3 tags.
+
+.SS OPTIONS
+.TP
+\fB-album\fP \fIALBUM_NAME\fP
+Sets the album name to use when tagging files. All files will be
+tagged with this album name without prompting.
+.TP
+\fB-album\fP=\fIALBUM_NAME\fP
+Sets the album name to use when tagging files. All files will be tagged
+with this album name without prompting.
+
+.TP
+\fB-artist\fP=\fIARTIST_NAME\fP
+Sets the artist name to use when tagging files. All files will be tagged
+with this artist name without prompting.
+
+.TP
+\fB-comment\fP=\fICOMMENT\fP
+Sets the comment to use when tagging files. All files will be tagged
+with this comment without prompting.
+
+.TP
+\fB-copyalbum\fP
+Copies the album field from the source file tag set by -copytagfrom
+
+.TP
+\fB-copyall\fP
+Copies all the fields from the source file tag set by -copytagfrom
+
+.TP
+\fB-copyartist\fP
+Copies the artist field from the source file tag set by -copytagfrom
+
+.TP
+\fB-copycomment\fP
+Copies the comment field from the source file tag set by -copytagfrom
+
+.TP
+\fB-copygenre\fP
+Copies the genre field from the source file tag set by -copytagfrom
+
+.TP
+\fB-copysong\fP
+Copies the song field from the source file tag set by -copytagfrom
+
+.TP
+\fB-copytagfrom\fP=\fIFILE \fP
+Sets the filename to copy tag field from.
+
+.TP
+\fB-copytrack\fP
+Copies the track field from the source file tag set by -copytagfrom
+
+.TP
+\fB-copyyear\fP
+Copies the year field from the source file tag set by -copytagfrom
+
+.TP
+\fB-defcase\fP
+Use the default case of characters from the ID3 tag when renaming files.
+This is default.
+
+.TP
+\fB-default\fP=\fIDEFAULT\fP
+Sets the default field to be used only when renaming if a field is blank.
+Useful when renaming and creating "unknown" subdirectories.
+ Defaults to "unknown".
+
+.TP
+\fB-edit\fP
+If a file already has a tag and you want to change just one specific field
+of the tag, use this option in conjunction with -tag and the option for
+the field you want to change.  For example to change just the album name
+of a file:
+id3ren -tag -edit -album="New Album Name" sample.mp3
+ * This option is a toggle.
+
+.TP
+\fB-genre\fP=\fI#\fP | \fIGENRE_NAME\fP
+Sets the genre to use when tagging files. All files will be tagged
+with this genre without prompting.  To see a list of allowable genres
+use the -showgen argument.  -genre accepts either the number of the genre
+as displayed with -showgen, or the name of the genre.
+
+.TP
+\fB-help\fP
+Displays the help screen.
+
+.TP
+\fB-log\fP
+Log most output to id3ren.log.
+ * This option is a toggle.
+
+.TP
+\fB-lower\fP
+Convert file names to lowercase characters.
+
+.TP
+\fB-noalbum\fP
+Don't prompt for the album when adding a tag.
+ * This option is a toggle.
+
+.TP
+\fB-nocfg\fP
+Don't try reading any config files, even if they exist.
+ * This option is a toggle.
+
+.TP
+\fB-nocomment\fP
+Don't prompt for a comment when adding a tag.
+ * This option is a toggle.
+
+.TP
+\fB-nogenre\fP
+Don't prompt for a genre when adding a tag.
+ * This option is a toggle.
+
+.TP
+\fB-notagprompt\fP
+Never prompt for tag information.  Files without tags are skipped.
+ * This option is a toggle.
+
+.TP
+\fB-notrack\fP
+Don't prompt for the track number when adding a tag.
+ * This option is a toggle.
+
+.TP
+\fB-noyear\fP
+Don't prompt for the year when adding a tag.
+ * This option is a toggle.
+
+.TP
+\fB-quick\fP
+Automatically sets -noalbum, -nocomment, and -noyear.
+
+.TP
+\fB-quiet\fP
+Run quietly, displaying only errors or prompts.
+ * This option is a toggle.
+
+.TP
+\fB-remchar\fP=\fICHARS\fP
+CHARS indicates a string of characters that will be removed from the
+filename if found.
+
+.TP
+\fB-repchar\fP=\fICHARS\fP
+CHARS indicates a string of characters, EACH followed by the character to
+replace it with.  For example, to replace all plus '+' signs with a hyphen
+'-', you would use '-repchar +-'.  To do the previous, and also replace
+all '&' with '_', you would use '-repchar +-&_'.
+
+.TP
+\fB-searchgen\fP=\fI#\fP | \fIGENRE\fP
+Searches the list of genres and displays either the genre name
+corresponding to #, or shows all substring matches of GENRE.
+
+.TP
+\fB-showgen\fP
+Displays all the music genres currently in the program.
+
+.TP
+\fB-showtag\fP
+Display the tags for the specified files.  No renaming is performed.
+
+.TP
+\fB-song\fP=\fISONG_NAME\fP
+Sets the song name to use when tagging files. All files will be tagged
+with this song name without prompting.
+
+.TP
+\fB-space\fP=\fIPSTRING\fP
+Change all spaces in the renamed file to STRING. To remove all spaces, use
+'-space=' or '-space=""'.  The default space character is ' '.
+
+.TP
+\fB-striptag\fP
+Remove the tags for the specified files.
+ * This option is a toggle.
+
+.TP
+\fB-tag\fP
+Always ask for a tag, even if the file already has one.
+ * This option is a toggle.
+
+.TP
+\fB-tagfromfilename\fP, \fB-tagffn\fP
+Use informations from the filename when tagging. See tagtemplate.
+ * This option is a toggle.
+
+.TP
+\fB-tagonly\fP
+Don't rename any files, just ask for tag information.  Note that -tagonly
+only asks for tag information on files that don't have a tag already.
+To have it ask for a tag on all files, use with -tag.
+ * This option is a toggle.
+
+.TP
+\fB-tagtemplate\fP=\fITEMPLATE\fP
+Use TEMPLATE as the basis for tagging files.  The default template used
+is '[%a]-[%s].mp3'.  Identifiers that can be used in the template are:
+  %a  - Artist name
+  %c  - Comment
+  %s  - Song name
+  %t  - Album title
+  %n  - Track Number
+  %y  - Year
+  %g  - Genre
+  %d  - Dummy
+ It is a VERY good idea to have fixed separators between fields.
+
+.TP
+\fB-template\fP=\fITEMPLATE\fP
+Use TEMPLATE as the basis for renaming files.  The default template used
+is '[%a]-[%s].mp3'.  Identifiers that can be used in the template are:
+  %a  - Artist name
+  %c  - Comment
+  %s  - Song name
+  %t  - Album title
+  %n  - Track Number
+  %y  - Year
+  %g  - Genre
+
+.TP
+\fB-track\fP=\fITRACK\fP
+Sets the track number to use when tagging files. All files will be
+tagged with this track number without prompting.
+TRACK must be an integer between 1 and 99.
+
+.TP
+\fB-upper\fP
+Convert file names to uppercase characters.
+
+.TP
+\fB-verbose\fP
+Display more messages than usual.
+ * This option is a toggle.
+
+.TP
+\fB-year\fP=\fIYEAR\fP
+Sets the year to use when tagging files. All files will be tagged
+with this year without prompting.
+
+.TP
+And of course the program accepts wildcards for filenames.  
+.SH FILES
+\fC*.mp3\fR
+All your mp3 files
+
+.SH "SEE ALSO"
+lame(1), xmms(1), mpg123(1), mp3blaster(1)
+
+.SH BOGUS
+If you have questions, comments, or bug reports, please contact cbothamy@free.fr
+To get the latest version, please visit http://cbothamy.free.fr/projects/id3ren/
